@@ -90,14 +90,8 @@
         <div class="field readonly-field"><label>BMI (auto)</label>
           <input type="text" id="bmiOut" readonly placeholder="—"></div>
 
-        <div class="field"><label>Systolic BP</label>
-          <input type="number" name="systolic_bp" min="80" max="220" placeholder="e.g. 118"></div>
-
-        <div class="field"><label>Diastolic BP</label>
-          <input type="number" name="diastolic_bp" min="40" max="140" placeholder="e.g. 78"></div>
-
-        <div class="field"><label>Pulse rate</label>
-          <input type="number" name="pulse_rate" min="40" max="160" placeholder="e.g. 76"></div>
+        <div class="field"><label>Are you pregnant?</label>
+          <select name="is_pregnant"><option>No</option><option>Yes</option></select></div>
 
         <div class="field"><label>Marital status</label>
           <select name="marital_status"><option>Unmarried</option><option>Married</option></select></div>
@@ -180,10 +174,24 @@
             <option>None</option><option>PCOS</option><option>PCOD</option><option>Other</option>
           </select></div>
 
-        <div class="field"><label>Current medication</label>
-          <select name="current_medication">
-            <option>None</option><option>Metformin</option><option>Birth control</option><option>Other</option>
+        <div class="field"><label>Currently on medication?</label>
+          <select id="medYesNo">
+            <option>No</option><option>Yes</option>
           </select></div>
+
+        <div class="field" id="medNameField" style="display:none"><label>Medication name</label>
+          <input type="text" id="medNameInput" placeholder="e.g. Metformin"></div>
+
+        <input type="hidden" name="current_medication" id="currentMedicationHidden" value="None">
+
+        <div class="field"><label>Systolic BP</label>
+          <input type="number" name="systolic_bp" min="80" max="220" placeholder="e.g. 118"></div>
+
+        <div class="field"><label>Diastolic BP</label>
+          <input type="number" name="diastolic_bp" min="40" max="140" placeholder="e.g. 78"></div>
+
+        <div class="field"><label>Pulse rate</label>
+          <input type="number" name="pulse_rate" min="40" max="160" placeholder="e.g. 76"></div>
 
         <div class="field"><label>FSH (mIU/mL)</label><input type="number" step="0.01" name="fsh" placeholder="optional"></div>
         <div class="field"><label>LH (mIU/mL)</label><input type="number" step="0.01" name="lh" placeholder="optional"></div>
