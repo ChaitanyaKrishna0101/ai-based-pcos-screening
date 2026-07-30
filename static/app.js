@@ -104,7 +104,26 @@
 
   // ---- step 3 -> results ----
   const clinicalForm = document.getElementById("clinicalForm");
+
+  // ---- medication yes/no toggle ----
+  const medYesNo = document.getElementById("medYesNo");
+  const medNameField = document.getElementById("medNameField");
+  const medNameInput = document.getElementById("medNameInput");
+  const currentMedicationHidden = document.getElementById("currentMedicationHidden");
+
+  medYesNo.addEventListener("change", () => {
+    if (medYesNo.value === "Yes") {
+      medNameField.style.display = "";
+    } else {
+      medNameField.style.display = "none";
+      medNameInput.value = "";
+    }
+  });
+
   document.getElementById("toResult").addEventListener("click", () => {
+    currentMedicationHidden.value = (medYesNo.value === "Yes" && medNameInput.value.trim())
+      ? medNameInput.value.trim()
+      : "None";
     const fd = new FormData(clinicalForm);
     for (const [k, v] of fd.entries()) {
       if (v !== "") collected[k] = v;
@@ -118,6 +137,9 @@
     skipClinical = false;
     basicForm.reset();
     clinicalForm.reset();
+    medNameField.style.display = "none";
+    medNameInput.value = "";
+    currentMedicationHidden.value = "None";
     document.getElementById("bmiOut").value = "";
     document.getElementById("stressVal").textContent = "5";
     skinChips.forEach(c => c.classList.remove("selected"));
